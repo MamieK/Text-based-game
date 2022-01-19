@@ -10,10 +10,11 @@ public class Game {
         int enemyAttackDamage = 20;
 
         int health = 100;
-        int attackDamage = 40;
+        int attackDamage = 30;
         int numHealthPotions = 3;
         int healthPotionHealAmount = 20;
         int healthPotionDropChance = 50;
+        int upgradeWeaponDamage = 50;
 
         boolean running = true;
 
@@ -47,6 +48,7 @@ public class Game {
                 System.out.println("\t1.Attack");
                 System.out.println("\t2.Drink health potion");
                 System.out.println("\t3.Leave!");
+                System.out.println("\t4.Upgrade your weapon!");
 
                 String input = in.nextLine();
                 if (input.equals("1")) {
@@ -55,44 +57,59 @@ public class Game {
 
                     enemyHealth -= damageDealt;
                     health -= damageTaken;
-                    System.out.println("\t> You strike the " + enemy + "for" + damageDealt + "damage");
-                    System.out.println("\t> YOu receive" + damageTaken + " in retaliation!");
+                    System.out.println("\t> You strike the " + enemy + "for" + "  " + damageDealt + "  " + "damage");
+                    System.out.println("\t> You receive" + "  " + damageTaken + "  " + " in retaliation!");
 
-                    if (health < 1) {
+                    if (health < 20) {
                         System.out.println("\t> You have taken too much damage, you are too weak to go on!");
                         break;
-                    }
-
-                }
-                else if (input.equals("2")) {
-                    if (numHealthPotions > 0) {
-                        health += healthPotionHealAmount;
-                        numHealthPotions--;
-                        System.out.println("\t> You drink a health potion, healing yourself for" + healthPotionHealAmount
-                                + "\n\t> You now have" + health + "HP"
-                                + "\n\t> You have " + numHealthPotions + "health potions left.\n");
+                    } else if (input.equals("2")) {
+                        if (numHealthPotions > 0) {
+                            health += healthPotionHealAmount;
+                            numHealthPotions--;
+                            System.out.println("\t> You drink a health potion, healing yourself for" + "  " + healthPotionHealAmount
+                                    + "\n\t> You now have" + "  " + health + "  " + "HP"
+                                    + "\n\t> You have " + "  " +  numHealthPotions + "  " + "health potions left.\n");
+                        } else {
+                            System.out.println("\t> You have no health potions left! Defeat enemies for a chance to go on! \n");
+                        }
+                    } else if (input.equals("3")) {
+                        System.out.println("\tYou run away from the" + enemy + "!");
+                        continue GAME;
                     } else {
-                        System.out.println("\t> You have no health potions left! Defeat enemies for a chance to go on! \n");
+                        System.out.println("\tInvalid Command!");
                     }
-                } else if (input.equals("3")) {
-                    System.out.println("\tYou run away from the" + enemy + "!");
-                    continue GAME;
-                } else {
-                    System.out.println("\tInvalid Command!");
+                }
+                if (health < 30) {
+                    System.out.println("You are gonna die...");
+                    break;
+                } else if (input.equals("4")) {
+                    if (health < 80) {
+                        System.out.println(" You can only upgrade your weapon when your HP is greater than 80");
+                    }
+                    int damageDealt = rand.nextInt(upgradeWeaponDamage);
+                    int damageTaken = rand.nextInt(enemyAttackDamage);
+
+                    if (health > 80){
+                        enemyHealth -= damageDealt;
+                        health -= damageTaken;
+                        System.out.println("\t> You strike the " + "  " + enemy  + "  " + "for" + "  " + damageDealt + "  " + "damage");
+                        System.out.println("\t> YOu receive" + "  " + damageTaken + "  " + " in retaliation!");
+                        if (health < 40) {
+                            System.out.println("\t> You have taken too much damage, you are too weak to go on!");
+                            break;
+                        }
+                    }
+
                 }
             }
-            if (health < 1) {
-                System.out.println("You are gonna die...");
-                break;
-            }
-
             System.out.println("-------------------------------------");
             System.out.println("#" + enemy + " was defeated! # ");
-            System.out.println("# You have " + health + "HP left. # ");
+            System.out.println("# You have " + "  " + health + "  " + "HP left. # ");
             if (rand.nextInt(100) > healthPotionDropChance) {
                 numHealthPotions++;
-                System.out.println("# The" + enemy + "dropped a health potion! # ");
-                System.out.println("# You now have" + numHealthPotions + " health potion(s). # ");
+                System.out.println("# The" + "  " +  enemy +"  " + "dropped a health potion! # ");
+                System.out.println("# You now have" + "  " +  numHealthPotions + "  " + " health potion(s). # ");
             }
             System.out.println("-------------------------------------");
             System.out.println("What would you like to do now? ");
@@ -107,7 +124,7 @@ public class Game {
             }
 
             if (input.equals("1")) {
-                System.out.println("You continue on your adventure!");
+                System.out.println("You can continue on your adventure!");
             }
             else if (input.equals("2")) {
                 System.out.println("You exist the game, successful from your adventure!");
@@ -120,3 +137,5 @@ public class Game {
 
 
     }
+
+}
