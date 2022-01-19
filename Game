@@ -5,19 +5,32 @@ public class Game {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         Random rand = new Random();
-        String[] enemies = {"Skeleton", "Zombie", "warrior", "Assassin"};
-        int maxEnemyHealth = 60;
-        int enemyAttackDamage = 25;
+        String[] enemies = {"Giant", "Zombie", "Dragon", "Magical"};
+        int maxEnemyHealth = 200;
+        int enemyAttackDamage = 20;
 
         int health = 100;
-        int attackDamage = 50;
+        int attackDamage = 40;
         int numHealthPotions = 3;
-        int healthPotionHealAmount = 30;
+        int healthPotionHealAmount = 20;
         int healthPotionDropChance = 50;
 
         boolean running = true;
 
-        System.out.println("Welcome to the Word game!");
+        System.out.println("Welcome to the Wonderland!");
+
+        System.out.println("Now, Let me introduce you to the whole NEW World--- Wonderland!!!");
+        System.out.println(" The number top of your head is your HP(Hit Point)" + health );
+        System.out.println(" You will find your HP number and the Enemy's HP number in each fighting session.");
+        System.out.println(" So There are Four types of enemies that you have to fight with, they are Giant, Zombie, Dragon, and Magical!");
+        System.out.println(" You will have three choices to chose, depending on the Enemy's HP.");
+        System.out.println(" You can bravely fight with them or you can be smart and leave the dangerous place.");
+        System.out.println(" Oh! Almost forgot to tell you the most important thing!!");
+        System.out.println(" While you attacking the enemy you will get injury for sure.");
+        System.out.println(" But don't worry. We prepare a magical medicines for you!!! ");
+        System.out.println(" It also has a limitation, you only have three chance to use them!!! So please don't waist it !");
+
+        System.out.println(" Welcome to the New world, Hope you enjoy your new journey here, and have fun with it!");
 
         GAME:
         while (running) {
@@ -107,4 +120,3 @@ public class Game {
 
 
     }
-}
